@@ -1,0 +1,7 @@
+Functions take in arguments
+	eg.
+		function_name(arguments/object)
+		
+Methods are applied at the end of objects
+	eg.
+		object_name.method()
