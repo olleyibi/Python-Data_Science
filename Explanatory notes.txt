@@ -5,3 +5,8 @@ Functions take in arguments
 Methods are applied at the end of objects
 	eg.
 		object_name.method()
+
+Data type identification
+	Tuple = ()
+	List = []
+	Dictionary = {}
