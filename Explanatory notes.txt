@@ -23,3 +23,4 @@ Method is like a cosequential sequence applied to an object
 	eg
 									.turn_left()		.extend()
 									.turn_right()		.index()
+
