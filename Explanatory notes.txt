@@ -1,26 +1,54 @@
-	# Function and methods
-Functions can take in multiple arguments/objects
-	eg.
-		function_name(arguments/object)
-		
-Methods are applied at the end of a single object
-	eg.
-		object_name.method()
+# Function and methods
+	Functions can take in multiple arguments/objects
+		eg.
+			function_name(arguments/object)
+			
+	Methods are applied at the end of a single object
+		eg.
+			object_name.method()
 
-	# Index and slicing
-Python position/index counts starts from '0' (zero)
 
-	# Data type identification
-Tuple = ()
-List = []
-Dictionary = {}
+# Index and slicing
+	Python position/index counts starts from '0' (zero)
 
-	# Class, Object, Attributes
-Class: eg 								bike-maker, 		list class
-Object/instance: eg 							bikes, 			list
-attribute/properties: eg 						color, size, 		type(int,str,floats)
-Method is like a cosequential sequence applied to an object
-	eg
-									.turn_left()		.extend()
-									.turn_right()		.index()
 
+# Data type identification
+	Tuple = ()
+	List = []
+	Dictionary = {}
+
+
+# Class, Object, Attributes
+	Class: eg 								bike-maker, 		list class
+	Object/instance: eg 							bikes, 			list
+	attribute/properties: eg 						color, size, 		type(int,str,floats)
+	Method is like a cosequential sequence applied to an object
+		eg
+										.turn_left()		.extend()
+										.turn_right()		.index()
+
+
+# SST / SSR / SSE
+	# SST (sum of squares total) OR TSS (Total Sum of Squares)
+		sumation of square diff between observed variavle and its mean
+		Dispersion of observed variable around mean or measure of total variability of the data
+		E(y(i) - ybar)^2
+
+	# SSR (sum of squares Regressions) OR ESS (Explained Sum of Squares)
+		sumation of square diff between predicted variavle and its mean
+		Measure that describes how well a line fits the data
+		E(yhat(i) - ybar)^2
+
+	# SSE (sum of squares Error) OR RSS (Residual Sum of Squares)
+		sumation of square diff between predicted variavle and its mean
+		Measure the unexplained variability by the regression
+		The smaller the error, the better the estimation power of regression
+		E(y(i) - yhat(i))^2
+
+	If SST = SSR....means regression captures all variability and is perfect
+	
+	SST = SSR + SSE
+	
+# R-Squared
+	R^2 = SSR/SST
+	This is a value/measure that quantifies the level of variability explained by the model
