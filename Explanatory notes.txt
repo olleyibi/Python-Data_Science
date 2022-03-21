@@ -52,3 +52,40 @@
 # R-Squared
 	R^2 = SSR/SST
 	This is a value/measure that quantifies the level of variability explained by the model
+	It measures the goodness of fit of the model
+	
+# Adjusted R-Squared
+	Always smaller than R-Squared
+	This is a measure that penalizes a model for increasing the number of predictors used
+	It is a basis for comparing models`````````````````````
+	
+# Linear Regression
+	# Simple Linear Regression
+		y = b0 + b1x
+		
+	# Multiple Linear Regression
+		y = b0 + b1x1 + b2x2 +....... bnxn
+		
+	y: dependent variable/predicted
+	x,x1,.....xn: independent variables/predictors
+	b0: intercept
+	b1,....bn: coefficient/slope
+
+# Hypothesis
+	Regression coefficients
+		Null Hypothesis:- H0 = b = 0 :: b is any coefficient/slope of a model (not intercept(b0)
+			 A p-value < 0.05 signifies to reject the null hypothesis, i.e b is significantly/statistically different from 0(zero)
+			 
+	Z - Statistic:- Follows a normal distribution
+	T - Statistic:- Follows a student T distribution
+	F - Statistic:- Follows F distribution
+		The lower the F - Statistic, the less significant the model is
+		This is used to test for overall significance of the model
+			F-test:
+				Null Hypothesis H0:b1=b2......bn=0
+				Alternate Hypothesis H1: atleast one bi != 0
+					It implies that if all bi = 0, then no independent variable matter
+					A p-value < 0.05 signifies to reject the null hypothesis, i.e atliest one bi is significantly/statistically different from 0(zero)
+					
+
+	
