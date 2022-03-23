@@ -57,11 +57,17 @@
 # Adjusted R-Squared
 	Always smaller than R-Squared
 	This is a measure that penalizes a model for increasing the number of predictors used
-	It is a basis for comparing models`````````````````````
+	It is a basis for comparing models
+		Adjusted R^2 = 1 - (1-R^2)*(n-1) / (n-p-1)
+			n = number of observations
+			p = number of predictors
 	
 # Linear Regression
-	# Simple Linear Regression
-		y = b0 + b1x
+	# Simple Linear Regression equations
+		y = b0 + b1x :for every unit increase in x, y increases by b1
+		y = b0 + b1[log(x)] :for every unit percent increase in x, y increases by b1
+		log(y) = b0 + b1[log(x)] :for every unit percent percent increase in x, y increases by b1 percent
+		log(y) = b0 + b1[log(x)] :for every unit increase in x, y increases by b1 percent
 		
 	# Multiple Linear Regression
 		y = b0 + b1x1 + b2x2 +....... bnxn
@@ -86,6 +92,26 @@
 				Alternate Hypothesis H1: atleast one bi != 0
 					It implies that if all bi = 0, then no independent variable matter
 					A p-value < 0.05 signifies to reject the null hypothesis, i.e atliest one bi is significantly/statistically different from 0(zero)
-					
 
+# Multicollinearity
+	This is the occurrence of high intercorrelations among two or more independent variables in a multiple regression model
+
+# Endogeneity
+	Occurs when explanatory variables are omitted in the regression, which would result in the error term being correlated with the explanatory variables
+					
+# Homoskedastic
+	This is a condition in which the variance of the residual, or error term, in a regression model is constant
+
+# Autocorrelation
+	This refers to the degree of correlation between the values of the same variables across different observations in the data
+	# Detecting it
+		Manually:: This can be detected by plotting the residuals and looking for patterns in the plot, if none then no autocorrelation
+		Using Durbin watson Test:: Usually between 0 and 4
+									2 indicates no autocorelation
+									<1 and >3  indicates the presence of autocorelation
+
+# Standardization
+	Also known as feature scaling or normalization
+	Process of transforming data to a standard scale
+	It involves subtracting the mean and dividing bt the standard deviation
 	
