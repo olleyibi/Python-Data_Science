@@ -95,23 +95,37 @@
 
 # Multicollinearity
 	This is the occurrence of high intercorrelations among two or more independent variables in a multiple regression model
-
+	This can be checked using VIF (variance inflation factor
+		VIF = 1 :: no multicollinearity
+		1 < VIF < 5 :: perfectly ok
+		5,6,10 < VIF :: unacceptable (it varies from 5-10)
+	
 # Endogeneity
 	Occurs when explanatory variables are omitted in the regression, which would result in the error term being correlated with the explanatory variables
 					
-# Homoskedastic
-	This is a condition in which the variance of the residual, or error term, in a regression model is constant
+# Homoscedastic
+	This is a condition in which the variance of the residual, or error term, in a regression model is constant (no pattern when residuals are plotted)
+	The most common fix for this is the log transformation
 
 # Autocorrelation
 	This refers to the degree of correlation between the values of the same variables across different observations in the data
 	# Detecting it
 		Manually:: This can be detected by plotting the residuals and looking for patterns in the plot, if none then no autocorrelation
 		Using Durbin watson Test:: Usually between 0 and 4
-									2 indicates no autocorelation
-									<1 and >3  indicates the presence of autocorelation
+						2 indicates no autocorelation
+						<1 and >3  indicates the presence of autocorelation
 
 # Standardization
 	Also known as feature scaling or normalization
 	Process of transforming data to a standard scale
 	It involves subtracting the mean and dividing bt the standard deviation
 	
+# Overfitting and Underfitting
+	Overfitting means a model has focused on the training set so muct that it 'missed the point'
+		Random noise is captured
+		High train accuracy and low test accuracy
+		Solution: Split data into 2 (training and test set)
+	Underfitting means the model has not captured the underlying logic of the data
+		it does not have  a strong predictive power with low accuracy
+		Low train accuracy and low test accuracy
+		
