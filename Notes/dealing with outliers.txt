@@ -1,0 +1,14 @@
+# Dealing with outlierrs (to derive a normal distribution) on Python
+	Check the mean, [25,50(median) and 75] percintile to identify outliers
+	Select variable and Plot PDF using 'sns.distplot(variable)' to visualise outliers
+	
+	Outliers
+		* Outliers on the left (minimum value is unreasonably lesser than mean)
+			q = data[variable].quantile(0.01) # get 1st percentile value
+			data = data[data[variable]>q] # get data greater than the 1st percentile value
+		
+		* Outliers on the right (maximum value is unreasonably larger than mean)
+			q = data[variable].quantile(0.01) # get 99th percentile value
+			data = data[data[variable]<q] # get data lesser than the 99th percentile value
+	
+	Repeat process on all requiring variables
