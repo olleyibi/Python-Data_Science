@@ -76,6 +76,9 @@
 	x,x1,.....xn: independent variables/predictors
 	b0: intercept
 	b1,....bn: coefficient/slope
+	
+	A positive weight(b1,...bn) indicates that as a feature(x) increases in value, so does y
+	A negative weight(b1,...bn) indicates that as a feature(x) decreases in value, so does y
 
 # Hypothesis
 	Regression coefficients
@@ -128,4 +131,9 @@
 	Underfitting means the model has not captured the underlying logic of the data
 		it does not have  a strong predictive power with low accuracy
 		Low train accuracy and low test accuracy
-		
+
+
+
+
+# NB
+	It is not always appropriate to standardize dummy variables because scaling has no effect on their predictive power; but when scaled they lose all the dummy meaning
