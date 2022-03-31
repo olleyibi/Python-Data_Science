@@ -132,8 +132,49 @@
 		it does not have  a strong predictive power with low accuracy
 		Low train accuracy and low test accuracy
 
+# Non-Linear Model
+	Quadratic
+	Exponential
+	Logistic
+
+# Logistic Regression
+	This implies that the possible outcomes are not numerical but rather categorical
+	This predicts the probability of an event occuring
+	
+	p(X) = [e(b0 + b1x1 +.....+bnxn)]/[1 + e(b0 + b1x1 +.....+bnxn)] .................Logistic Regression Model
+		When transformed:: [p(X)]/[1-p(X)] = e(b0 + b1x1 +.....+bnxn) ................ Logit Regression Model
+			[p(X)]/[1-p(X)] is called ODDS
+			Therfore:: ODDS = e(b0 + b1x1 +.....+bnxn)
+				Implies:: log(ODDS) = b0 + b1x1 +.....+bnxn
+					Log of ODDS is equal to a linear model
+		
+	Where:: p(X) represents the 'probability of and event 'X' occuring
+	
+# Likelihiid Function
+	Estimates how likely a model describes the real underlying relationship of the variables
+	The bigger the likelihood function, the higher the probability the model is correct
+	* MLE (Maximum likelihood estimation)
+		This tries to maximize the (log) likelihood function
+	* LL_Null (Log likelihood-null)
+		This is the log likelihood of a model with no independent variable
+		y = b0
+	* LLR (Log Likelihood ratio)
+		Like F-statistic
+		It measures if the model is statistically different from the LL_Null (ie useless model)
+	* Pseudo R-Squared (Recall: AIC, BIC, McFadden's R-Squared[alternative name])
+		A goog value is between 0.2 and 0.4
+		
+
 
 
 
 # NB
 	It is not always appropriate to standardize dummy variables because scaling has no effect on their predictive power; but when scaled they lose all the dummy meaning
+	
+	# Model Assumptions
+		Linear						Logistic
+		Linearity					Non-Linear
+		No Endogeneity					No Endogeneity
+		Normality & Homoscedastic			Normality & Homoscedastic
+		No Autocorrelation				No Autocorrelation
+		No Multicollinearity				No Multicollinearity
