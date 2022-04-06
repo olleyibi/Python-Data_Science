@@ -28,6 +28,24 @@
 										.turn_right()		.index()
 
 
+# Types of Analysis
+	* Exploratory
+		Getting acquainted with the data without explicitely trying to explain anything
+		Searching for patterns
+		Planning method to use
+		* Techniques used include
+			Data Visualization
+			Descriptive Statistics
+			Clustering
+	* Confirmatory and Explanatory
+		Both explain a phenomeno
+		Confirm hypothesis
+		Validate previous research
+		* Techniques Used includes
+			Hypothesis testing
+			Regression Analysis
+
+
 # SST / SSR / SSE
 	# SST (sum of squares total) OR TSS (Total Sum of Squares)
 		sumation of square diff between observed variavle and its mean
@@ -164,7 +182,29 @@
 	* Pseudo R-Squared (Recall: AIC, BIC, McFadden's R-Squared[alternative name])
 		A goog value is between 0.2 and 0.4
 		
+# Cluster Analysis
+	Grouping data together based on simmilarities/diferences among/from them/others
+	Cluster analysis is a multivariate statistical technique, that group's observations on the basis some of their features or variables they are described by.
+	It is used to::
+		* Explore Data
+		* Identify Pattersn
+	* Euclidean Distance
+		This is the sum of the squared difference between the position/coordinates (x[i],y[i]) of 2 points
+		* A centroid is the mid position between 2 points
+	* K-Means
+		'K' stands for the number of clusters we intend to identify
+		The criterion for selecting optimal 'K' is the elbow method which measures the 'Within Cluster Sum of Squares' WCSS
+			We want WCSS to be as low as possible to result to a suitable number of clusters for explanation
+			Pros & Cons
+					Limitations::						Remedies::
+				We need to pick 'k'					Elbow method solves that
+				Sensitive to initialization (seed initial position)	Use k_means++
+				Sensitive to outliers					Remove outliers
+				Produces spherical solutions
+				standardization						Not to be used when initially known a variable is more important than others
 
+# Classification
+	Predicting an output category given an input data
 
 
 
