@@ -19,13 +19,13 @@
 
 
 # Class, Object, Attributes
-	Class: eg 								bike-maker, 		list class
-	Object/instance: eg 							bikes, 			list
-	attribute/properties: eg 						color, size, 		type(int,str,floats)
+	Class: eg 															bike-maker, 		list class
+	Object/instance: eg 												bikes, 				list
+	attribute/properties: eg 											color, size, 		type(int,str,floats)
 	Method is like a cosequential sequence applied to an object
 		eg
-										.turn_left()		.extend()
-										.turn_right()		.index()
+																		.turn_left()		.extend()
+																		.turn_right()		.index()
 
 
 # Types of Analysis
@@ -44,6 +44,25 @@
 		* Techniques Used includes
 			Hypothesis testing
 			Regression Analysis
+
+
+# Machine Learning
+	Types::
+		* Supervised:
+			The algorithm is provided with inputs and their corresponding desired outputs
+			It learns how to produce outputs as close to the output
+			Types:
+				Classification:
+					Provides Categorised outputs
+				Regression:
+					Provides numerical outputs
+		* Unsupervised:
+			Machine receives inputs, but there are no target outputs
+			Therefore, the algorithm has no idea what the goal is.
+			Instead, it find some sort of dependent's or underlying logic in the data provided
+			It is especially useful when the goal is to split a dataset into a certain number of categories, which is unknow prior to implementation (clustering)
+		* Reinforcement:
+			A model is trained to act in an environment based on the rewards it receives.
 
 
 # SST / SSR / SSE
@@ -132,9 +151,9 @@
 	This refers to the degree of correlation between the values of the same variables across different observations in the data
 	# Detecting it
 		Manually:: This can be detected by plotting the residuals and looking for patterns in the plot, if none then no autocorrelation
-		Using Durbin watson Test:: Usually between 0 and 4
-						2 indicates no autocorelation
-						<1 and >3  indicates the presence of autocorelation
+		Using Durbin watson Test:: 		Usually between 0 and 4
+										2 indicates no autocorelation
+										<1 and >3  indicates the presence of autocorelation
 
 # Standardization
 	Also known as feature scaling or normalization
@@ -196,16 +215,66 @@
 		The criterion for selecting optimal 'K' is the elbow method which measures the 'Within Cluster Sum of Squares' WCSS
 			We want WCSS to be as low as possible to result to a suitable number of clusters for explanation
 			Pros & Cons
-					Limitations::						Remedies::
-				We need to pick 'k'					Elbow method solves that
-				Sensitive to initialization (seed initial position)	Use k_means++
-				Sensitive to outliers					Remove outliers
+					Limitations::													Remedies::
+				We need to pick 'k'												Elbow method solves that
+				Sensitive to initialization (seed initial position)				Use k_means++
+				Sensitive to outliers											Remove outliers
 				Produces spherical solutions
-				standardization						Not to be used when initially known a variable is more important than others
+				standardization													Not to be used when initially known a variable is more important than others
+	
+	* Types of Clustering
+		Flat (e.g. k-means)
+			Has no hierarchy
+		Hierarchical
+			* Types::
+				Agglomerative (Buttom-Up) [Much easier to solve mathematically]
+					Begins with an individual observation in its own cluster and begins to pair up (reducing clusters) until a single cluster containing all observations is derived
+					This is represented using a 'DENDROGRAM' chart/graph
+						The bigger the distance between 2 observations/links, the bigger the difference in terms of their observed feature(s)
+							Pros											Cons
+						Shows all possible linkages						Scalability (Hard to read with excess data)
+						Understand the data better						Computationally expensive (the more the observation, the slower it gets)
+						No need to preset number of clusters
+						Many method to perform this approach
+				Divisive (Top-Down)
+					Begins with all observation are in the same cluster; then broken down into 2,3,4.....,n clusters until each observation is a seperate cluster
 
 # Classification
 	Predicting an output category given an input data
 
+
+# Scalar, Vector, Matrix, Tensor
+	* Scalar (Tensor of Rank 0)
+		Dimension is 1 X 1
+		A single row and single column matrix
+		A single number is a scalar e.g. [1]
+
+	* Vector (Tensor of Rank 1)
+		Dimension is (1 X n) OR (m X 1)
+		A collection of scalars
+		A single row OR single column matrix e.g. [1 2 4]
+		Types::
+			Row vector::
+				Has a single row and multiple column e.g. [1 2 4]
+			Column Vector::
+			Has a single column and multiple rows e.g. [ 1
+														 2 ]
+
+	* Matrix (Tensor of Rank 2)
+		Dimension is m X n
+		This is a collection of vectors also a collection scalars
+		A multiple row and multiple column matrix
+		[ 1 2 3
+		  3 5 7 ]
+		  
+	* Tensor (Rank 3)
+		Dimension is k X m X n
+		A collection of matrix
+	
+	Adding / subtracting 2 matrices requires both to have same dimension
+	Dot product of vectors is the sum of the product of corresponding values
+		A matrix of (m X n) can only be multiplied with a matrix (n X k) and this gives a (m X k) matrix result
+		
 
 
 # NB
