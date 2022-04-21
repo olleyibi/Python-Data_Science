@@ -54,8 +54,13 @@
 			Types:
 				Classification:
 					Provides Categorised outputs
+					Loss function used is cross-entropy
+						L(y,t) = -SUM(t[ln(y)]) :: Cross-entropy -> minus sum of t(targets * natural log of the outputs)
 				Regression:
 					Provides numerical outputs
+					Loss function used is L2-norm
+						L2-norm = SUM(y-t)^2 :: sum of the squared difference between the outputs and the targets
+			The lower the loss fuction, the more accurate the model is
 		* Unsupervised:
 			Machine receives inputs, but there are no target outputs
 			Therefore, the algorithm has no idea what the goal is.
@@ -83,14 +88,22 @@
 		E(y(i) - yhat(i))^2
 
 	If SST = SSR....means regression captures all variability and is perfect
-	
 	SST = SSR + SSE
+
+
+# Learning Rate
+	High enough::
+		To reach the closest minimum in a rotational amount of time
+	Low enough
+		 To avoid oscillating around the minimum
+
 	
 # R-Squared
 	R^2 = SSR/SST
 	This is a value/measure that quantifies the level of variability explained by the model
 	It measures the goodness of fit of the model
 	
+
 # Adjusted R-Squared
 	Always smaller than R-Squared
 	This is a measure that penalizes a model for increasing the number of predictors used
@@ -98,6 +111,7 @@
 		Adjusted R^2 = 1 - (1-R^2)*(n-1) / (n-p-1)
 			n = number of observations
 			p = number of predictors
+
 	
 # Linear Regression
 	# Simple Linear Regression equations
@@ -117,6 +131,7 @@
 	A positive weight(b1,...bn) indicates that as a feature(x) increases in value, so does y
 	A negative weight(b1,...bn) indicates that as a feature(x) decreases in value, so does y
 
+
 # Hypothesis
 	Regression coefficients
 		Null Hypothesis:- H0 = b = 0 :: b is any coefficient/slope of a model (not intercept(b0)
@@ -133,6 +148,7 @@
 					It implies that if all bi = 0, then no independent variable matter
 					A p-value < 0.05 signifies to reject the null hypothesis, i.e atliest one bi is significantly/statistically different from 0(zero)
 
+
 # Multicollinearity
 	This is the occurrence of high intercorrelations among two or more independent variables in a multiple regression model
 	This can be checked using VIF (variance inflation factor
@@ -140,12 +156,15 @@
 		1 < VIF < 5 :: perfectly ok
 		5,6,10 < VIF :: unacceptable (it varies from 5-10)
 	
+
 # Endogeneity
 	Occurs when explanatory variables are omitted in the regression, which would result in the error term being correlated with the explanatory variables
 					
+
 # Homoscedastic
 	This is a condition in which the variance of the residual, or error term, in a regression model is constant (no pattern when residuals are plotted)
 	The most common fix for this is the log transformation
+
 
 # Autocorrelation
 	This refers to the degree of correlation between the values of the same variables across different observations in the data
@@ -155,11 +174,13 @@
 										2 indicates no autocorelation
 										<1 and >3  indicates the presence of autocorelation
 
+
 # Standardization
 	Also known as feature scaling or normalization
 	Process of transforming data to a standard scale
 	It involves subtracting the mean and dividing bt the standard deviation
 	
+
 # Overfitting and Underfitting
 	Overfitting means a model has focused on the training set so muct that it 'missed the point'
 		Random noise is captured
@@ -169,10 +190,12 @@
 		it does not have  a strong predictive power with low accuracy
 		Low train accuracy and low test accuracy
 
+
 # Non-Linear Model
 	Quadratic
 	Exponential
 	Logistic
+
 
 # Logistic Regression
 	This implies that the possible outcomes are not numerical but rather categorical
@@ -187,6 +210,7 @@
 		
 	Where:: p(X) represents the 'probability of and event 'X' occuring
 	
+
 # Likelihiid Function
 	Estimates how likely a model describes the real underlying relationship of the variables
 	The bigger the likelihood function, the higher the probability the model is correct
@@ -201,6 +225,7 @@
 	* Pseudo R-Squared (Recall: AIC, BIC, McFadden's R-Squared[alternative name])
 		A goog value is between 0.2 and 0.4
 		
+
 # Cluster Analysis
 	Grouping data together based on simmilarities/diferences among/from them/others
 	Cluster analysis is a multivariate statistical technique, that group's observations on the basis some of their features or variables they are described by.
@@ -239,6 +264,7 @@
 				Divisive (Top-Down)
 					Begins with all observation are in the same cluster; then broken down into 2,3,4.....,n clusters until each observation is a seperate cluster
 
+
 # Classification
 	Predicting an output category given an input data
 
@@ -276,7 +302,6 @@
 		A matrix of (m X n) can only be multiplied with a matrix (n X k) and this gives a (m X k) matrix result
 		
 
-
 # NB
 	It is not always appropriate to standardize dummy variables because scaling has no effect on their predictive power; but when scaled they lose all the dummy meaning
 	
@@ -287,3 +312,20 @@
 		Normality & Homoscedastic			Normality & Homoscedastic
 		No Autocorrelation				No Autocorrelation
 		No Multicollinearity				No Multicollinearity
+	
+	# Setting up tensorflow for anaconda
+		* Open Anaconda Prompt
+		* type " conda create --name py3-TF2.0 python=3" # Create new environment to install tensorflow
+		* type " y " and hit enter
+		* type " conda activate py3TF-2.0 " # activate the environment
+		* type " conda install tensorflow " # install tensorflow
+		* type " y " and hit enter
+		* type " conda install nb_conda_kernels "
+		* type " y " and hit enter
+		* type " conda deactivate "
+		* type " conda install nb_conda_kernels "
+		* type " y " and hit enter
+		* type " pip install --upgrade tensorflow " upgrade tensorflow to latest version
+		* type " pip install ipykernel # to ensure to see kernel in jupyter when started
+		* Restart Jupyter
+		
