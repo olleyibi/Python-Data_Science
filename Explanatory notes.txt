@@ -96,6 +96,71 @@
 		To reach the closest minimum in a rotational amount of time
 	Low enough
 		 To avoid oscillating around the minimum
+	* Schedules
+		Method 1
+			Start from high initial learning rate (First 5 epochs [learning rate = 0.1])
+			At some point, lower learning rate to avaod oscillation (Next 5 epochs [learning rate = 0.01])
+			Around the end, select a small rate to get precise answer (Until end [learning rate = 0.001])
+		Method 2 (Exponential Schedule)
+			Smoothly reduces the learning rate
+				100 epochs, 50<c<500
+				1000 epochs, 500<c<5000
+					c is decay coefficient
+		Adaptive Learning Rates
+			Types
+				AdaGrad (Adaptive Gradient Algorithm)
+					It dynamically varies the learning rate at each update and for every weight individually
+				RMSProp (Root Mean Square Propagation)
+		ADAM (Adaptive Moment Estimation)
+			Updates RMSProp with a momentum rule
+		
+		
+# Preprocessing
+	This is any manipulation of the dataset before running it through the model
+	* Importance
+		Helps improve compatibility with the used library
+		Adjust imputs of diff magnitudes
+		Helps with generalization
+	* Types (transformations)
+		Relatives
+			Relative metrics are useful with time-series data. (e.g. stock prices, exchange rates)
+		Logarithms
+			Faster computation
+			Lower order of magnitudes
+			Clearer relationships
+			Homogeneous variance
+		Machine learning Preprocessing
+			- On Numerical data
+				* Standardization (Hepls with the difference in magnitude when working with numerical data)
+					Also known as Feature scaling or Normalization
+					This is the process of transforming data into a standard scale (subtract mean and divide by its standard deviation: results to a mean of 0 and standard deviation of 1)
+				* Normalization
+					Could invlove converting samples to a unit lehgth vector using either L1 or L2-norm
+				* PCA (Principal Component Analysis)
+					A dimension reduction technique used to combine several variables (that refers to the smabe bigger concept) into a bigger (latent) variable
+					Also often have standardized output
+				* Whitening
+					Mostly performed after PCA
+					Removes most underlying correlation between data points (useful when conceptually data should be uncorrelated)
+			- On Categorical data
+				* Ordinal Encoding
+					Assign progressive values to each category/group
+				* One-Hot Encoding (helps reduce correlation)
+					It requires a lot of columns
+					Prefered when data has few categories
+					Consists of creating as many columns as posible values/groups
+						Groups		cake	yoghurt		bread
+						cake		1		0			0
+						yoghurt		0		1			0
+						bread		0		0			1
+				* Binary Encoding
+					Might have some unspecified correlation
+					Preferable when data has many categories
+					Convert the ordinal values from ordinal encoding to binary to form singe column for each digit
+						Groups		ordinal		binary ->	var1	var2
+						cake		1			01 ->		0		1
+						yoghurt		2			10 ->		1		0
+						bread		3			11 ->		1		1
 
 	
 # R-Squared
@@ -189,6 +254,45 @@
 	Underfitting means the model has not captured the underlying logic of the data
 		it does not have  a strong predictive power with low accuracy
 		Low train accuracy and low test accuracy
+	Bias-Variance  
+		The balance between underfitting and overfitting
+	Early Stopping
+		Cause a model to stop training to prevent overfitting
+		Methods of usage
+			- Preset number of epochs
+				Very few epochs would cause an unsatisfactory result
+				Can still lead to overfitting
+			- Stop when updates become too small
+				Stop when the relative decrese in the loss function is les than 0.001
+				Saves computing power
+				Can still lead to overfitting
+			- Validation set
+				Addresses overfitting
+				It may take more time to fit
+				Compares the validation and training loss and stops where both functions begins diverging
+
+
+# Initialization
+	Process in which the initial values of weights are set
+	* Types
+		Initialize randomly in uniform
+		Choose a normal initializer from a '0' (zero) mean normal distribution and a standard deviation of '0.1'
+		Xavia Initialization (Glorot Initialization)
+			Uniform  Xavier Initialization
+				Draw each weight (w) from a random uniform distribution in range(-x,x) for x = square_root(6/[ input+output])
+			Normal Xavier Initialization
+				Draw each weight (w) from a normal distribution with a mean of '0', and a standard deviation (sigma) = square_root(2/[ input+output])
+
+
+# Stochastic Gradient Descent (SGD)
+	Gradient Descent iterates over the whole dataset before updating the weights (very slow)
+	SGD
+		Related to batching concept and the weights are updated after every batch
+			Spliting data into batches and updates the weights after every batch instead of each epoch
+			Updates in real time inside a single epoch
+			Most likely to stop at a local minimum rather thana  global one (depends on learning rate)
+				Can be accounted for by factoring in momentum
+	
 
 
 # Non-Linear Model
@@ -302,16 +406,46 @@
 		A matrix of (m X n) can only be multiplied with a matrix (n X k) and this gives a (m X k) matrix result
 		
 
+# Deep Net
+	* Parameters (e.g. weights, bias)
+		Found by optimization
+	* Hyperparameters (e.g. width, depth, learning rate, batch size, momentum rate, decay coefficient)
+		Preset before optimization begins
+	
+	* Activator function / non-linearities are required by deep nets to find complex relationships through arbitraty functions
+		It transform inputs into outputs of a different kind
+		It helps in stacking layers
+		The brain is the activation function that tells human to / not wear warm clothes when there is a linear temperature drop
+		* Types/common kinds used (they are all monotonic,continuous and differentiable)
+			Name                          Formula                                          Range
+			sigmoid(logistic function)    sigma(a)=1/[1+exp^(-a)]                          (0,1)
+			TanH(hyperbolic Tangent)      tanh(a)=[(exp^a)-(exp^-a)]/[(exp^a)+(exp^-a)]    (-1,1)
+			ReLu (rectifier linear unit)  relu(a) max(0,a)                                 (0,infinity)
+			softmax                       sigma{1}(a) = exp^a{i}/sumation{j}(exp^a{j})     (0,1)
+			
+			* Softmax
+				Transforms a bunch of arbitrarily large or small numbers into a valid probability diatribution
+				Often used as the activation of the output layer in classification problems
+				
+	* Back propagation of errors
+		* Forward propagation is the process of pushing inputs through the nets
+		* Through back propagation, the algorithm identifies which weights leads to which errors
+			- it adjusts the weights that have a bigger contribution to the errors by more than the weights with a smaller contribution
+
+			
+
+
+
 # NB
 	It is not always appropriate to standardize dummy variables because scaling has no effect on their predictive power; but when scaled they lose all the dummy meaning
 	
 	# Model Assumptions
-		Linear						Logistic
-		Linearity					Non-Linear
+		Linear							Logistic
+		Linearity						Non-Linear
 		No Endogeneity					No Endogeneity
-		Normality & Homoscedastic			Normality & Homoscedastic
+		Normality & Homoscedastic		Normality & Homoscedastic
 		No Autocorrelation				No Autocorrelation
-		No Multicollinearity				No Multicollinearity
+		No Multicollinearity			No Multicollinearity
 	
 	# Setting up tensorflow for anaconda
 		* Open Anaconda Prompt
