@@ -46,30 +46,6 @@
 			Regression Analysis
 
 
-# Machine Learning
-	Types::
-		* Supervised:
-			The algorithm is provided with inputs and their corresponding desired outputs
-			It learns how to produce outputs as close to the output
-			Types:
-				Classification:
-					Provides Categorised outputs
-					Loss function used is cross-entropy
-						L(y,t) = -SUM(t[ln(y)]) :: Cross-entropy -> minus sum of t(targets * natural log of the outputs)
-				Regression:
-					Provides numerical outputs
-					Loss function used is L2-norm
-						L2-norm = SUM(y-t)^2 :: sum of the squared difference between the outputs and the targets
-			The lower the loss fuction, the more accurate the model is
-		* Unsupervised:
-			Machine receives inputs, but there are no target outputs
-			Therefore, the algorithm has no idea what the goal is.
-			Instead, it find some sort of dependent's or underlying logic in the data provided
-			It is especially useful when the goal is to split a dataset into a certain number of categories, which is unknow prior to implementation (clustering)
-		* Reinforcement:
-			A model is trained to act in an environment based on the rewards it receives.
-
-
 # SST / SSR / SSE
 	# SST (sum of squares total) OR TSS (Total Sum of Squares)
 		sumation of square diff between observed variavle and its mean
@@ -91,30 +67,6 @@
 	SST = SSR + SSE
 
 
-# Learning Rate
-	High enough::
-		To reach the closest minimum in a rotational amount of time
-	Low enough
-		 To avoid oscillating around the minimum
-	* Schedules
-		Method 1
-			Start from high initial learning rate (First 5 epochs [learning rate = 0.1])
-			At some point, lower learning rate to avaod oscillation (Next 5 epochs [learning rate = 0.01])
-			Around the end, select a small rate to get precise answer (Until end [learning rate = 0.001])
-		Method 2 (Exponential Schedule)
-			Smoothly reduces the learning rate
-				100 epochs, 50<c<500
-				1000 epochs, 500<c<5000
-					c is decay coefficient
-		Adaptive Learning Rates
-			Types
-				AdaGrad (Adaptive Gradient Algorithm)
-					It dynamically varies the learning rate at each update and for every weight individually
-				RMSProp (Root Mean Square Propagation)
-		ADAM (Adaptive Moment Estimation)
-			Updates RMSProp with a momentum rule
-		
-		
 # Preprocessing
 	This is any manipulation of the dataset before running it through the model
 	* Importance
@@ -272,29 +224,6 @@
 				Compares the validation and training loss and stops where both functions begins diverging
 
 
-# Initialization
-	Process in which the initial values of weights are set
-	* Types
-		Initialize randomly in uniform
-		Choose a normal initializer from a '0' (zero) mean normal distribution and a standard deviation of '0.1'
-		Xavia Initialization (Glorot Initialization)
-			Uniform  Xavier Initialization
-				Draw each weight (w) from a random uniform distribution in range(-x,x) for x = square_root(6/[ input+output])
-			Normal Xavier Initialization
-				Draw each weight (w) from a normal distribution with a mean of '0', and a standard deviation (sigma) = square_root(2/[ input+output])
-
-
-# Stochastic Gradient Descent (SGD)
-	Gradient Descent iterates over the whole dataset before updating the weights (very slow)
-	SGD
-		Related to batching concept and the weights are updated after every batch
-			Spliting data into batches and updates the weights after every batch instead of each epoch
-			Updates in real time inside a single epoch
-			Most likely to stop at a local minimum rather thana  global one (depends on learning rate)
-				Can be accounted for by factoring in momentum
-	
-
-
 # Non-Linear Model
 	Quadratic
 	Exponential
@@ -315,7 +244,7 @@
 	Where:: p(X) represents the 'probability of and event 'X' occuring
 	
 
-# Likelihiid Function
+# Likelihood Function
 	Estimates how likely a model describes the real underlying relationship of the variables
 	The bigger the likelihood function, the higher the probability the model is correct
 	* MLE (Maximum likelihood estimation)
@@ -406,6 +335,37 @@
 		A matrix of (m X n) can only be multiplied with a matrix (n X k) and this gives a (m X k) matrix result
 		
 
+# Machine Learning
+	Types::
+		* Supervised:
+			The algorithm is provided with inputs and their corresponding desired outputs
+			It learns how to produce outputs as close to the output
+			Types:
+				Classification:
+					Provides Categorised outputs
+					Loss function used is cross-entropy
+						L(y,t) = -SUM(t[ln(y)]) :: Cross-entropy -> minus sum of t(targets * natural log of the outputs)
+						Types:
+							binary_crossentropy
+								Case where there is binary encoding
+							categorical_crossentropy
+								Expects that the targets are already one-hot encoded
+							sparse_categorical_crossentropy
+								Applies one-hot encoding to the data
+				Regression:
+					Provides numerical outputs
+					Loss function used is L2-norm
+						L2-norm = SUM(y-t)^2 :: sum of the squared difference between the outputs and the targets
+			The lower the loss fuction, the more accurate the model is
+		* Unsupervised:
+			Machine receives inputs, but there are no target outputs
+			Therefore, the algorithm has no idea what the goal is.
+			Instead, it find some sort of dependent's or underlying logic in the data provided
+			It is especially useful when the goal is to split a dataset into a certain number of categories, which is unknow prior to implementation (clustering)
+		* Reinforcement:
+			A model is trained to act in an environment based on the rewards it receives.
+
+
 # Deep Net
 	* Parameters (e.g. weights, bias)
 		Found by optimization
@@ -421,7 +381,32 @@
 			sigmoid(logistic function)    sigma(a)=1/[1+exp^(-a)]                          (0,1)
 			TanH(hyperbolic Tangent)      tanh(a)=[(exp^a)-(exp^-a)]/[(exp^a)+(exp^-a)]    (-1,1)
 			ReLu (rectifier linear unit)  relu(a) max(0,a)                                 (0,infinity)
+				This is a piecewise linear function that will output the input directly if it is positive, otherwise, it will output zero
 			softmax                       sigma{1}(a) = exp^a{i}/sumation{j}(exp^a{j})     (0,1)
+			
+			* sigmoid(logistic function)
+				The input to the function is transformed into a value between 0.0 and 1.0
+				Inputs that are much larger than 1.0 are transformed to the value 1.0, similarly, values much smaller than 0.0 are snapped to 0.0
+				The shape of the function for all possible inputs is an S-shape from zero up through 0.5 to 1.0
+			
+			* TanH(hyperbolic Tangent)
+				This is a similar shaped nonlinear activation function that outputs values between -1.0 and 1.0
+				It was preferred over the sigmoid activation function as models that used it were easier to train and often had better predictive performance
+				
+					#* TanH and Sigmoid both saturate:
+						This means that large values snap to 1.0 and small values snap to -1 or 0 for tanh and sigmoid respectively
+						The functions are only really sensitive to changes around their mid-point of their input, such as 0.5 for sigmoid and 0.0 for tanh
+							
+			
+			* ReLu (rectifier linear unit)
+				This is a piecewise linear function that will output the input directly if it is positive, otherwise, it will output zero
+					It returns the value provided as input directly, or the value 0.0 if the input is 0.0 or less
+				It looks and acts like a linear function, but is, in fact, a nonlinear function allowing complex relationships in the data to be learned
+				It provides more sensitivity to the activation sum input and avoid easy saturation
+					# code for ReLU
+						def rectified(x):
+							return max(0.0, x)
+				
 			
 			* Softmax
 				Transforms a bunch of arbitrarily large or small numbers into a valid probability diatribution
@@ -431,9 +416,59 @@
 		* Forward propagation is the process of pushing inputs through the nets
 		* Through back propagation, the algorithm identifies which weights leads to which errors
 			- it adjusts the weights that have a bigger contribution to the errors by more than the weights with a smaller contribution
+	
+	# In buliding a neural net try
+		- Adding/subtracting hidden layer
+		- Increasing or decreasing  number hidden units per layer
 
 			
+# Learning Rate
+	High enough::
+		To reach the closest minimum in a rotational amount of time
+	Low enough
+		 To avoid oscillating around the minimum
+	* Schedules
+		Method 1
+			Start from high initial learning rate (First 5 epochs [learning rate = 0.1])
+			At some point, lower learning rate to avaod oscillation (Next 5 epochs [learning rate = 0.01])
+			Around the end, select a small rate to get precise answer (Until end [learning rate = 0.001])
+		Method 2 (Exponential Schedule)
+			Smoothly reduces the learning rate
+				100 epochs, 50<c<500
+				1000 epochs, 500<c<5000
+					c is decay coefficient
+		Adaptive Learning Rates
+			Types
+				AdaGrad (Adaptive Gradient Algorithm)
+					It dynamically varies the learning rate at each update and for every weight individually
+				RMSProp (Root Mean Square Propagation)
+		ADAM (Adaptive Moment Estimation)
+			Updates RMSProp with a momentum rule
+		
 
+
+# Initialization
+	Process in which the initial values of weights are set
+	* Types
+		Initialize randomly in uniform
+		Choose a normal initializer from a '0' (zero) mean normal distribution and a standard deviation of '0.1'
+		Xavia Initialization (Glorot Initialization)
+			Uniform  Xavier Initialization
+				Draw each weight (w) from a random uniform distribution in range(-x,x) for x = square_root(6/[ input+output])
+			Normal Xavier Initialization
+				Draw each weight (w) from a normal distribution with a mean of '0', and a standard deviation (sigma) = square_root(2/[ input+output])
+
+
+# Stochastic Gradient Descent (SGD)
+	Gradient Descent iterates over the whole dataset before updating the weights (very slow)
+	SGD
+		Related to batching concept and the weights are updated after every batch
+			Spliting data into batches and updates the weights after every batch instead of each epoch
+			Updates in real time inside a single epoch
+			Most likely to stop at a local minimum rather thana  global one (depends on learning rate)
+				Can be accounted for by factoring in momentum
+
+				
 
 
 # NB
