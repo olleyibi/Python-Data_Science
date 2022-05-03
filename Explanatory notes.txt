@@ -469,6 +469,49 @@
 				Can be accounted for by factoring in momentum
 
 				
+# CNN (convolutional Neural Network
+	- Convolution
+		Devides a large matrix into possible 5 X 5 matrix to from a unit matris
+	- Pooling
+		Takes the largest number from the square as it potentially represents the strongest detail
+			e.g. 
+				taking a 28 X 28 nmatrix
+				it could devide it up to multiple 2 X 2 matrix
+				and select the largest number which indicates a strong detail
+	Mainly used in image recognition as it Spatial Proximities because setails ar looked for enerywhere in the photo
+	
+	
+# RNN (Recurrent Neural Networks)
+	Specifically designed for sequential data e.g (trading signals, stocks, Forex or music and handwritting recognition)
+	There are additional weights that lead from the hidden units to themselves
+
+
+# Non Neural Network Machine Learning Models
+	- Discrimitive Models
+		Uses an input and provides a probability of whether the output is correct
+		e.g. 
+			Random FOrest:
+				Mainly used for classification
+				Based on decision trees (decision trees are not good at classifying as they tend to overfit alot)
+				Random forest many decision trees (many bad classifiers equal a good classifier)
+	- Generative Models
+		Do not give an output while given an input
+		The target is the joint probability distribution of input and output
+		It goes from input to output and from output to input
+		It is applicable in problems such as translations (English to French)
+		e.g. 
+			Hidden Markov Models:
+				Assumes the problem at hand is a markov process implying the future can be predicted based on the present
+			Bayesian Networks:
+				Takes into account prior probabilities
+				The difference between a neural network and of Bayesian network is that with Bayesian networks, probabilities 
+					of an event occurring are used as the models inputs while in a neural networks with each input alone doesn't 
+					mean much, but a model trained on many, many inputs gives amazing insight
+						E.g. 2 people having the same disease but completely different symptoms
+							 the neural net work would be confused as there are little trend between patient but bayesian would not
+							 consider the case to be unusual
+				
+
 
 
 # NB
