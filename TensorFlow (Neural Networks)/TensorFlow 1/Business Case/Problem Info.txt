@@ -1,0 +1,89 @@
+Audio.csv Description
+
+The data was gathered from the audio book app
+The input represents 2 years worth of engagement - inputs
+and 6 months of data to check conversion - targets
+
+
+
+1st Column
+	ID: Like a name of individual customer
+
+2nd Column
+	Overall Book Length: Sum of the length of book purchases
+
+3rd Column
+	Average Book Length: Sum of the audio book length divided by the number of purches
+
+4th Column
+	Overall price paid
+
+5th Column
+	Average price paid
+
+6th Column
+	Review: A boolean value which shows if customers left a review
+		Shows engagement on a platform
+		Assumptions that people that leave reviews are more likely to come again
+
+7th Column
+	Review out of 10: Measures a customer review on a scale of 1 - 10
+		This contains a lot of missing cells, so these ampty cells are replaced with the average review of the review column
+	
+8th Column
+	Total minutes listened: Measure of engagement
+	
+8th Column
+	Completion: is the total minutes listened divided by overall book length
+	
+8th Column
+	Support Request: Shows the total number of support requests (ranges from forgotten platform to assistance on using the platform)
+		May mean the more support a person needed, the likely it is the customer got fed up and left the platform
+
+8th Column
+	Last Visited minus purchase date: difference between the last time a person interacted with the platform and their first purchase date
+		Another measure of engagement
+		If a person engages regularly with the platform then this difference will be bigger (customer is likely to convert again)
+		if '0': customer has never accessed what they bought (unlikely they will convert again)
+
+8th Column
+	Targets: Boolean
+		1: if a person converted
+		0: if they did not convert
+		
+Task: Create a machine learning algorithm that can predict if a customer will buy again
+
+Action Plan
+	# Preprocess
+		Steps
+			Balance the dataset
+				- For categorical data
+					This would require ensuring each class is equally likely to be picked or selected  e.g.([cat:dog -> 50:50], [cat:dog:horse -> 33:33:33])
+				- For our current dataset, its observed a few amount of people converted in the target
+					To solve this, we randomly select the same amount of people that converted as well as those that did not convert to forma new data
+			Divide the dataset inti 3 parts (training, validation and test
+			Save data in a tensor friendly format
+	# Create machine learning algorithm
+	
+	
+# Problem
+	You are given data from an Audiobook app. Logically, it relates only to the audio versions of books. Each customer in the database has made a purchase at least once, that's why
+	he/she is in the database. We want to create a machine learning algorithm based on our available data that can predict if a customer will buy again from the Audiobook company.
+
+	The main idea is that if a customer has a low probability of coming back, there is no reason to spend any money on advertizing to him/her. If we can focus our efforts ONLY on
+	customers that are likely to convert again, we can make great savings. Moreover, this model can identify the most important metrics for a customer to come back again. 
+	Identifying new customers creates value and growth opportunities.
+
+	You have a .csv summarizing the data. There are several variables: Customer ID, Book length in mins_avg (average of all purchases), Book length in minutes_sum (sum of all purchases),
+	Price Paid_avg (average of all purchases), Price paid_sum (sum of all purchases), Review (a Boolean variable), Review (out of 10), Total minutes listened, Completion (from 0 to 1),
+	Support requests (number), and Last visited minus purchase date (in days).
+
+	So these are the inputs (excluding customer ID, as it is completely arbitrary. It's more like a name, than a number).
+
+	The targets are a Boolean variable (so 0, or 1). We are taking a period of 2 years in our inputs, and the next 6 months as targets. So, in fact, we are predicting if: based on the
+	last 2 years of activity and engagement, a customer will convert in the next 6 months. 6 months sounds like a reasonable time. If they don't convert after 6 months, chances are 
+	they've gone to a competitor or didn't like the Audiobook way of digesting information.
+
+	The task is simple: create a machine learning algorithm, which is able to predict if a customer will buy again.
+
+	This is a classification problem with two classes: won't buy and will buy, represented by 0s and 1s.
