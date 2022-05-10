@@ -1,3 +1,43 @@
+# Data
+	Information stored in form of symbols: 1s and 0s, other digits, letters, special characters etc.
+	Can be subjected to:
+		Collection
+		Measurement
+		Analysis
+		Further processing
+	* Stores in Databases:
+		represent an electronic collection of data or a structure filled with information, 
+		organized in a way that is easy to access, manage and update.
+		* Databsese are stored in Database servers:
+			A combination of hardware and software responsible for storing, managing and 
+			processing large amounts of data
+			* Types:
+				Web Server
+				Database Servers
+				FTP Severs
+
+
+# Application programming Interfaces (API)
+	This is a contract allowing software to share data with each other
+		It lets devices and software applications communicate in real time.
+	APIs are a collection of endpoints to which developers can attach and then extract specific 
+		information that can be used by those who are working with the apps.
+	It is the technology necessary to process requests from the clients to the servers 
+		and in response brings the requested data from the server.
+
+
+# Data Asset
+	data asset in general is just data that is expected to have some value in the future every day.
+	Example:
+		Interllectual Property (IP)
+			Patent
+			Songs Composed
+		Database with thousand of records
+		Websites provided specific forms of information
+	
+
+
+
 # Function and methods
 	Functions can take in multiple arguments/objects
 		eg.
