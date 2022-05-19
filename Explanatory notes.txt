@@ -39,13 +39,18 @@
 
 
 # Function and methods
-	Functions can take in multiple arguments/objects
-		eg.
-			function_name(arguments/object)
-			
-	Methods are applied at the end of a single object
-		eg.
-			object_name.method()
+	* Function
+		It is an independent entity in the sense that it is not associated with an object by construction
+		Functions can take in multiple arguments/objects
+			eg.
+				function_name(arguments/object)
+				
+	* Method
+		A method from a given package is generally applied to an object of a certain class
+		Different libraries have their own set of methods
+		Methods are applied at the end of a single object
+			eg.
+				object_name.method()
 
 
 # Index and slicing
@@ -556,6 +561,8 @@
 
 # NB
 	It is not always appropriate to standardize dummy variables because scaling has no effect on their predictive power; but when scaled they lose all the dummy meaning
+	
+	Best to use Numpy packages when working with only numeric data and use Pandas when working with both numeric and non-numeric data
 	
 	# Model Assumptions
 		Linear							Logistic
